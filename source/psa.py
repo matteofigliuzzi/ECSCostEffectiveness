@@ -124,6 +124,8 @@ class Icer():
     def compute_icer(self):
 
         self.strategy1.testing_cost = self.testing_cost1
+        self.strategy2.testing_cost = self.testing_cost2
+
 
         out1 = self.strategy1.assess_strategy(self.disease_space,
                                               self.life_expectancy_healthy, self.intervention_cost,
@@ -247,7 +249,7 @@ class Psa():
         self.life_exp2_deterministic = out_avg.life_exp2
 
 
-    def plot_ceac_hist(self, bins=None, labels='', range=None):
+    def plot_ceac_hist(self, bins=None, labels='', range=None,outfile=None):
 
         if bins is None:
             bins = np.int(np.log2(self.nsim) * 5)
@@ -274,13 +276,19 @@ class Psa():
 
         plt.ticklabel_format(axis='x', style='', scilimits=[-10, 10])
 
-        ax.set_xlabel('ICER threshold (Euros/Year)')
+        ax.set_xlabel('Willingness to pay (Euros/Year)')
         ax.set_ylabel('Probability', color=color1)
+        ax.set_ylim([0,1])
         ax_bis.set_ylabel('ICER prob density function', color=color2)
         plt.legend()
         ax.legend()
 
-        plt.show()
+
+        if outfile is None:
+            plt.show()
+        else:
+            plt.savefig(outfile)
+
         return
 
     def plot_ceac(self):
