@@ -17,89 +17,96 @@ from load_data import data_loader
 
 app = Dash(__name__, suppress_callback_exceptions=True)
 
+colors = {
+    'background': '#111111',
+    'text': '#7FDBFF'
+}
+
 # disease_dict, strategy_dict = load_data()
 
 file_disease = '../data/Dati Input Disease.xlsx'
 file_strategies = '../data/Dati Input Strategies.xlsx'
 file_costs = '../data/Dati Input Costs.xlsx'
 
-data_loader = data_loader(file_disease,file_strategies,file_costs=file_costs)
-
+data_loader = data_loader(file_disease, file_strategies, file_costs=file_costs)
 
 # df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
 
 app.layout = html.Div([
 
+    html.H1("Carrier Screening Cost-Effectiveness analyzer"),
+
     html.Div([
 
         html.H2("1 - Upload Data"),
-
         html.Div([
-            html.H3("Upload Disease Data"),
+            html.Div([
+                html.H3("Upload Disease Data"),
 
-            dcc.Upload(
-                id='upload-data',
-                children=html.Div([
-                    'Drag and Drop or ',
-                    html.A('Select File')
-                ]), style={
-                    'height': '60px',
-                    'lineHeight': '60px',
-                    'borderWidth': '1px',
-                    'borderStyle': 'dashed',
-                    'borderRadius': '5px',
-                    'textAlign': 'center',
-                    'margin': '10px',
-                },
-                # Allow multiple files to be uploaded
-                multiple=True
-            ),
-            html.Div(id='output-data-upload'),
-        ],style={
-                    'width': '48%',
-                    'display': 'inline-block'
-                }),
+                dcc.Upload(
+                    id='upload-data',
+                    children=html.Div([
+                        'Drag and Drop or ',
+                        html.A('Select File')
+                    ]), style={
+                        'height': '60px',
+                        'lineHeight': '60px',
+                        'borderWidth': '1px',
+                        'borderStyle': 'dashed',
+                        'borderRadius': '5px',
+                        'textAlign': 'center',
+                        'margin': '10px',
+                    },
+                    # Allow multiple files to be uploaded
+                    multiple=True
+                ),
+                html.Div(id='output-data-upload', style={'height': '100px', "overflow": "scroll"}),
+            ], style={
+                'width': '48%',
+                'display': 'inline-block'
+            }),
 
-        html.Div([
-            html.H3("Upload Strategy Data"),
+            html.Div([
+                html.H3("Upload Strategy Data"),
 
-            dcc.Upload(
-                id='upload-data-strategy',
-                children=html.Div([
-                    'Drag and Drop or ',
-                    html.A('Select File')
-                ]), style={
-                    'height': '60px',
-                    'lineHeight': '60px',
-                    'borderWidth': '1px',
-                    'borderStyle': 'dashed',
-                    'borderRadius': '5px',
-                    'textAlign': 'center',
-                    'margin': '10px',
-                },
-                # Allow multiple files to be uploaded
-                multiple=True
-            ),
-            html.Div(id='output-data-upload-strategy'),
-        ], style={
-                    'width': '48%',
-                    'display': 'inline-block',
-                    'float': 'right',
-                }),
+                dcc.Upload(
+                    id='upload-data-strategy',
+                    children=html.Div([
+                        'Drag and Drop or ',
+                        html.A('Select File')
+                    ]), style={
+                        'height': '60px',
+                        'lineHeight': '60px',
+                        'borderWidth': '1px',
+                        'borderStyle': 'dashed',
+                        'borderRadius': '5px',
+                        'textAlign': 'center',
+                        'margin': '10px',
+                    },
+                    # Allow multiple files to be uploaded
+                    multiple=True
+                ),
+                html.Div(id='output-data-upload-strategy',style = {'height': '100px', "overflow": "scroll"}),
+            ], style={
+                'width': '48%',
+                'display': 'inline-block',
+                'float': 'right',
+            }),
+        ])
 
     ]),
-    html.Br(),
+    #html.Br(),
 
     html.Div([
         html.H2("2 - Select strategies"),
 
         html.Div([
 
-
             html.H3("Strategy 1"),
             dcc.Dropdown(
-                ['No testing'], #list(data_loader.strategy_dict.keys()),  # ['no testing', 'limited testing', 'full testing'],
-                'No testing', #list(data_loader.strategy_dict.keys())[0],
+                ['No testing'],
+                # list(data_loader.strategy_dict.keys()),  # ['no testing', 'limited testing', 'full testing'],
+                'No testing',  # list(data_loader.strategy_dict.keys())[0],
                 id='strategy1'
             ),
             html.Div(
@@ -115,7 +122,7 @@ app.layout = html.Div([
                     ),
                     # dcc.Input(type='number', value=1)
                 ])
-        ], style={'width': '48%', 'display': 'inline-block'}),
+        ], style={'width': '48%', 'display': 'inline-block', "verticalAlign": "top"}),
 
         html.Div([
             html.H3("Strategy 2"),
@@ -144,7 +151,7 @@ app.layout = html.Div([
             #    id='yaxis-type',
             #    inline=True
             # )
-        ], style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
+        ], style={'width': '48%', 'float': 'right', 'display': 'inline-block', "verticalAlign": "top"})
 
     ]),
 
@@ -208,7 +215,7 @@ app.layout = html.Div([
                 ),
                 # dcc.Input(type='number', value=1)
             ]
-        )], style={'width': '48%', 'float': 'right', 'display': 'inline-block'}),
+        )], style={'width': '48%', 'float': 'right', 'display': 'inline-block', 'color': colors['background']}),
     # ,style={"display": "grid", "grid-template-columns": "10% 40% 10%"}
 
     html.Br(),
@@ -216,20 +223,20 @@ app.layout = html.Div([
 
     html.Div([
         html.H6("Total Cost strategy 1 (Euros)"),
-        html.Div(id='out_total_cost1'),
+        # html.Div(id='out_total_cost1'),
         html.Div(id='in_total_cost1'),
         html.H6("Life expectancy strategy 2 (Years)"),
-        html.Div(id='out_life_exp1'),
+        # html.Div(id='out_life_exp1'),
         html.Div(id='in_life_exp1'),
         # dcc.Input(type='number', value=1)
     ], style={'width': '48%', 'display': 'inline-block'}),
 
     html.Div([
         html.H6("Total Cost strategy 2 (Euros)"),
-        html.Div(id='out_total_cost2'),
+        # html.Div(id='out_total_cost2'),
         html.Div(id='in_total_cost2'),
         html.H6("Life expectancy strategy 2 (Years)"),
-        html.Div(id='out_life_exp2'),
+        # html.Div(id='out_life_exp2'),
         html.Div(id='in_life_exp2'),
         # html.Div(id='my-output'),
         # dcc.Input(type='number', value=1)
@@ -237,7 +244,7 @@ app.layout = html.Div([
 
     html.Div([
         html.H6("ICER (Euros / LYG)"),
-        html.Div(id='out_icer'),
+        # html.Div(id='out_icer'),
         html.Div(id='in_icer'),
         html.Br(),
         html.Br(),
@@ -272,33 +279,34 @@ def parse_contents(contents, filename, date):
         print(e)
         return html.Div([
             'There was an error processing this file.'
-        ]),pd.DataFrame()
+        ]), pd.DataFrame()
 
     return html.Div([
-        html.H5(filename),
-        html.H6(datetime.datetime.fromtimestamp(date)),
+        #html.H5(filename),
+        #html.H6(datetime.datetime.fromtimestamp(date)),
 
         dash_table.DataTable(
             df.to_dict('records'),
             [{'name': i, 'id': i} for i in df.columns]
-        ),
+        )
+                        #,
 
-        html.Hr(),  # horizontal line
+        #html.Hr(),  # horizontal line
 
         # For debugging, display the raw contents provided by the web browser
-        html.Div('Raw Content'),
-        html.Pre(contents[0:200] + '...', style={
-            'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all'
-        })
-    ]),df
+        #html.Div('Raw Content'),
+        #html.Pre(contents[0:200] + '...', style={
+        #    'whiteSpace': 'pre-wrap',
+        #    'wordBreak': 'break-all'
+        #})
+    ]), df
 
 
-#@app.callback(
+# @app.callback(
 #    dependencies.Output('strategy1', 'options'),
 #    [dependencies.Input('data_loader', 'value')]
-#)
-#def update_date_dropdown(data_loader):
+# )
+# def update_date_dropdown(data_loader):
 #    return [{'label': i, 'value': i} for i in data_loader.strategy_dict.keys()]
 
 
@@ -318,22 +326,18 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         for df in df_list:
             data_loader.load_disease(df)
 
-        #print(children)
-        #print(df_list)
+        # print(children)
+        # print(df_list)
         return children
 
 
 @app.callback(Output('output-data-upload-strategy', 'children'),
-            dependencies.Output('strategy1', 'options'),
+              dependencies.Output('strategy1', 'options'),
               dependencies.Output('strategy2', 'options'),
               Input('upload-data-strategy', 'contents'),
               State('upload-data-strategy', 'filename'),
               State('upload-data-strategy', 'last_modified'))
 def update_output_strategy(list_of_contents, list_of_names, list_of_dates):
-
-    print('aaaaaas')
-    strategy_dict = [{'label': i, 'value': i} for i in data_loader.strategy_dict.keys()]
-
     if list_of_contents is not None:
         children_plus_df = [
             parse_contents(c, n, d) for c, n, d in
@@ -345,16 +349,24 @@ def update_output_strategy(list_of_contents, list_of_names, list_of_dates):
         for df in df_list:
             data_loader.load_strategies(df)
 
-        print(df)
+        # print(df)
 
+        print('aaaaaas')
+        strategy_dict = [{'label': i, 'value': i} for i in data_loader.strategy_dict.keys()]
 
-        return children,strategy_dict,strategy_dict
+        print(strategy_dict)
+        return children, strategy_dict, strategy_dict
 
     else:
-        return None,strategy_dict,strategy_dict
+
+        print('aaaaaas')
+        strategy_dict = [{'label': i, 'value': i} for i in data_loader.strategy_dict.keys()]
+
+        print(strategy_dict)
+        return None, strategy_dict, strategy_dict
 
 
-#@app.callback(
+# @app.callback(
 #    Output('out_total_cost1', component_property='children'),
 #    Output('out_total_cost2', component_property='children'),
 #    Output('out_life_exp1', component_property='children'),
@@ -365,8 +377,8 @@ def update_output_strategy(list_of_contents, list_of_names, list_of_dates):
 #    Input('in_life_exp1', component_property='value'),  # ,suppress_callback_exceptions=True),
 #    Input('in_icer', component_property='value'),  # ,suppress_callback_exceptions=True)
 #    Input('in_life_exp2', component_property='value')  # ,suppress_callback_exceptions=True)
-#)
-#def update_output_div(input_value1, input_value2, life1, life2, icer):
+# )
+# def update_output_div(input_value1, input_value2, life1, life2, icer):
 #    return input_value1, input_value2, life1, life2, icer
 
 
