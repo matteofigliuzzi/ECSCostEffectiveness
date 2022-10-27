@@ -48,10 +48,10 @@ class data_loader():
             strategy_dict[strategy] = Strategy(strategy_name=strategy, disease_list=disease_list,
                                                     disease_dict=self.disease_dict)
 
-        strategy_dict['Strategy A1 (MS)'].testing_cost = 240
-        strategy_dict['Strategy A2 (FS)'].testing_cost = 270
-        strategy_dict['Strategy C (ACOG)'].testing_cost = 180
-        strategy_dict['Strategy D (ACMG)'].testing_cost = 180
+        #strategy_dict['Strategy A1 (MS)'].testing_cost = 240
+        #strategy_dict['Strategy A2 (FS)'].testing_cost = 270
+        #strategy_dict['Strategy C (ACOG)'].testing_cost = 180
+        #strategy_dict['Strategy D (ACMG)'].testing_cost = 180
 
         strategy_dict['No testing'] = Strategy(strategy_name='No testing', disease_list=[], testing_cost=0,
                                                     disease_dict=self.disease_dict)

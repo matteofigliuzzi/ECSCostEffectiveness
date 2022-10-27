@@ -24,9 +24,9 @@ colors = {
 
 # disease_dict, strategy_dict = load_data()
 
-file_disease = '../data/Dati Input Disease.xlsx'
-file_strategies = '../data/Dati Input Strategies.xlsx'
-file_costs = '../data/Dati Input Costs.xlsx'
+file_disease = '../data/Dati Input Disease_Tier3.xlsx'
+file_strategies = '../data/Dati Input Strategies_Tier3.xlsx'
+file_costs = '../data/Dati Input Strategy Costs_Tier3.xlsx'
 
 data_loader = data_loader(file_disease, file_strategies, file_costs=file_costs)
 
@@ -420,7 +420,7 @@ def update_graph_CEAC(strategy1, strategy2, strategy1_cost, strategy2_cost, inte
                testing_cost2_lb=strategy2_cost[0], testing_cost2_ub=strategy2_cost[1],
                eps_cs_lb=eps_cs_bounds[0], eps_cs_ub=eps_cs_bounds[1],
                eps_pgt_lb=eps_pgt_bounds[0], eps_pgt_ub=eps_pgt_bounds[1],
-               rho_notint_lb=rho_notint_lb, rho_notint_ub=rho_notint_ub, nsim=10000)
+               rho_notint_lb=rho_notint_lb, rho_notint_ub=rho_notint_ub, nsim=1000)
 
     # fig = px.histogram(psa.icer_mc_samples)
 
