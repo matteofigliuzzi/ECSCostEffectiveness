@@ -5,7 +5,7 @@ different carrier screening strategies.
 ## Mathematical Model
 
 
-![plot](./resources/ecs.png)
+![plot](./resources/ecs.jpg)
 
 Model parameters:
 
