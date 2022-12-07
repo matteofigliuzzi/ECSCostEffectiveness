@@ -4,6 +4,9 @@ different carrier screening strategies.
 
 ## Mathematical Model
 
+
+![plot](./resources/ecs.png)
+
 Model parameters:
 
 - $p_{carrier}(d)$ carrier rate for disease $d$
@@ -12,7 +15,7 @@ Model parameters:
 - $\rho$ not-intervention probability
 - $\epsilon_{PGT}$ intervention failure probability
 - $C(d)$ healthcare cost for disease $d$
-- $Y_{loss}(d)$ life expectancy loss for disease $d$
+- $L(d)$ life expectancy change caused by disease $d$ 
 - $C_{CS}(\mathcal{S})$ carrier screening cost for strategy $\mathcal{S}$
 - $C_{intervention}$ intervention cost
 
@@ -42,9 +45,13 @@ intervention costs and healthcare costs is:
 
 $$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_d p_{intervention}(d) C_{intervention} + \sum_d p_{affected}(d) C(d)$$
 
-The expected life expectancy loss for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
+The expected life years gained (LYG) for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
 
-$$E[Y_{loss}(\mathcal{S})] = \sum_d p_{affected}(d) L(d)$$
+$$E[LYG(\mathcal{S})] = \sum_d p_{affected}(d) L(d)$$
+
+The Increamental Cost-Effectiveness Ratio (ICER) between strategy $\mathcal{S_1}$ and $\mathcal{S_2}$ is:
+
+$$ICER($\mathcal{S_1}$;$\mathcal{S_2}$) = \frac{E[LYG(\mathcal{S_2})]-E[LYG(\mathcal{S_1})]}{E[C(\mathcal{S_2})]-E[C(\mathcal{S_1})]}
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
@@ -67,6 +74,8 @@ A jupyter notebook to perform deterministic and probabilistic analysis is availa
 notebook/cost_effectivness_notebook.ipynb. Make sure that dependencies listed in requirements.txt are satisfied.
 
 
+## References
 
+IMPLEMENTING PRECONCEPTION EXPANDED CARRIER SCREENING IN A UNIVERSAL HEALTHCARE SYSTEM: A MODEL-BASED COST-EFFECTIVENESS ANALYSIS 
 
 
