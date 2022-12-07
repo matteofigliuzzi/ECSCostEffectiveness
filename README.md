@@ -11,16 +11,20 @@ Model parameters:
 - $\epsilon_{CS}$ false negative rate for carrier screening
 - $\rho$ not-intervention probability
 - $\epsilon_{PGT}$ intervention failure probability
+- $C(d)$ healthcare cost for disease $d$
+- $Y_{loss}(d)$ life expectancy loss for disease $d$
+- $C_{CS}(\mathcal{S})$ carrier screening cost for strategy $\mathcal{S}$
+- $C_{intervention}$ intervention cost
 
 In case of recessive disease, the probability for a couple to be at risk is:
 
 $$p_{risk}(d) = p_{carrier}(d)^2$$
 
-In case of X-lined disease, the probability for a couple to be at risk is:
+In case of X-linked disease, the probability for a couple to be at risk is:
 
 $$p_{risk}(d) = p_{carrier}(d)$$
 
-Probability for a child to be affected in case strategy does not screen for disease $d$:
+Probability for a child to be affected in case strategy does not screen for disease $d$ is given by Mendelian inheritance rule:
 
 $$p_{affected}(d)=\frac{1}{4} p_{risk}(d)$$
 
@@ -31,7 +35,16 @@ $$p_{affected}(d)=\frac{1}{4} p_{risk}(d)\left[ \epsilon_{CS} + (1-\epsilon_{CS}
 Intervention probability in case strategy screens for disease $d$:
 
 $$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\epsilon_{CS})(1-\rho)$$
-$$
+
+
+The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, including screening cost, 
+intervention costs and healthcare costs is:
+
+$$E[C](\mathcal{S}) = C_{CS}(\mathcal{S}) + \sum_d p_{intervention}(d) C_{intervention} + \sum_d p_{affected}(d) C(d)$$
+
+The expected life expectancy loss for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
+
+$$E[Y_{loss}](\mathcal{S}) = \sum_d p_{affected}(d) L(d)$$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
