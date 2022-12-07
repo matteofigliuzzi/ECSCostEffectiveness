@@ -68,6 +68,8 @@ Visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
 Custom analysis can be uploaded uploading excel files with custom disease list and custom strategies.
 The excel files should be organized as example files in data/ folder.
 
+![plot](./resources/CEAC.png)
+
 ## Run cost-effectiveness analysis on jupyter notebook
 
 A jupyter notebook to perform deterministic and probabilistic analysis is availalble in 
