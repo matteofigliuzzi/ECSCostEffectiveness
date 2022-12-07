@@ -15,7 +15,8 @@ Model parameters:
 - $\rho$ not-intervention probability
 - $\epsilon_{PGT}$ intervention failure probability
 - $C(d)$ healthcare cost for disease $d$
-- $L(d)$ life expectancy change caused by disease $d$ 
+- $L(d)$ life expectancy change caused by disease $d$
+- $\mathcal{D}(\mathcal(S))$ set of diseases screened by strategy $\mathcal{S}$ 
 - $C_{CS}(\mathcal{S})$ carrier screening cost for strategy $\mathcal{S}$
 - $C_{intervention}$ intervention cost
 
@@ -40,18 +41,17 @@ Intervention probability in case strategy screens for disease $d$:
 $$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\epsilon_{CS})(1-\rho)$$
 
 
-The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, including screening cost, 
-intervention costs and healthcare costs is:
+The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$ is:
 
-$$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_d p_{intervention}(d) C_{intervention} + \sum_d p_{affected}(d) C(d)$$
+$$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_{d\,\,\in\,\mathcal{D}(\mathcal(S))} p_{intervention}(d) C_{intervention} + \sum_{d\,\,\in\,\mathcal{D}(\mathcal(S))} p_{affected}(d) C(d)$$
 
 The expected life years gained (LYG) for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
 
-$$E[LYG(\mathcal{S})] = \sum_d p_{affected}(d) L(d)$$
+$$E[LYG(\mathcal{S})] = \sum_{d\,\,\in\,\mathcal{D}(\mathcal(S))} p_{affected}(d) L(d)$$
 
 The Increamental Cost-Effectiveness Ratio (ICER) between strategy $\mathcal{S_1}$ and $\mathcal{S_2}$ is:
 
-$$ICER($\mathcal{S_1}$;$\mathcal{S_2}$) = \frac{E \[LYG(\mathcal{S_2})\]-E\[LYG(\mathcal{S_1})\]}{E\[C(\mathcal{S_2})\]-E\[C(\mathcal{S_1})\]}$$
+$$ICER(\mathcal{S_1};\mathcal{S_2}) = \frac{E \[LYG(\mathcal{S_2})\]-E\[LYG(\mathcal{S_1})\]}{E\[C(\mathcal{S_2})\]-E\[C(\mathcal{S_1})\]}$$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
