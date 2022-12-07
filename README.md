@@ -40,11 +40,11 @@ $$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\epsilon_{CS})(1-\rho)$$
 The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, including screening cost, 
 intervention costs and healthcare costs is:
 
-$$E[C](\mathcal{S}) = C_{CS}(\mathcal{S}) + \sum_d p_{intervention}(d) C_{intervention} + \sum_d p_{affected}(d) C(d)$$
+$$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_d p_{intervention}(d) C_{intervention} + \sum_d p_{affected}(d) C(d)$$
 
 The expected life expectancy loss for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
 
-$$E[Y_{loss}](\mathcal{S}) = \sum_d p_{affected}(d) L(d)$$
+$$E[Y_{loss}(\mathcal{S})] = \sum_d p_{affected}(d) L(d)$$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
