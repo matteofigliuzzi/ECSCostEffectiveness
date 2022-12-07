@@ -8,13 +8,13 @@ Model parameters:
 
 - $p_{carrier}(d)$ carrier rate for disease $d$
 - $p_{risk}(d)$ probability for the couple to be at risk for disease $d$
-- $\eps_{CS}$ false negative rate for carrier screening
-- $\rho$ intervention probability
-- $\eps_{PGT}$ intervention failure probability
+- $\epsilon_{CS}$ false negative rate for carrier screening
+- $\rho$ not-intervention probability
+- $\epsilon_{PGT}$ intervention failure probability
 
 In case of recessive disease, the probability for a couple to be at risk is:
 
-$$p_{risk}(d) = \left(p_{carrier}(d)\right)^2$$
+$$p_{risk}(d) = p_{carrier}(d)^2$$
 
 In case of X-lined disease, the probability for a couple to be at risk is:
 
@@ -26,11 +26,11 @@ $$p_{affected}(d)=\frac{1}{4} p_{risk}(d)$$
 
 Probability for a child to be affected in case strategy screens for disease $d$:
 
-$$p_{affected}(d)=\frac{1}{4} p_{risk}(d)\left[ \eps_{CS} + (1-\eps_{CS})\rho + (1-\eps_{CS})(1-\rho)\eps_{PGT}  \right]$$
+$$p_{affected}(d)=\frac{1}{4} p_{risk}(d)\left[ \epsilon_{CS} + (1-\epsilon_{CS})\rho + (1-\epsilon_{CS})(1-\rho)\epsilon_{PGT}  \right]$$
 
 Intervention probability in case strategy screens for disease $d$:
 
-$$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\eps_{CS})(1-\rho)$$
+$$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\epsilon_{CS})(1-\rho)$$
 $$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
