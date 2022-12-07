@@ -51,7 +51,7 @@ $$E[LYG(\mathcal{S})] = \sum_d p_{affected}(d) L(d)$$
 
 The Increamental Cost-Effectiveness Ratio (ICER) between strategy $\mathcal{S_1}$ and $\mathcal{S_2}$ is:
 
-$$ICER($\mathcal{S_1}$;$\mathcal{S_2}$) = \frac{E[LYG(\mathcal{S_2})]-E[LYG(\mathcal{S_1})]}{E[C(\mathcal{S_2})]-E[C(\mathcal{S_1})]}$$
+$$ICER($\mathcal{S_1}$;$\mathcal{S_2}$) = \frac{E \[LYG(\mathcal{S_2})\]-E\[LYG(\mathcal{S_1})\]}{E\[C(\mathcal{S_2})\]-E\[C(\mathcal{S_1})\]}$$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
