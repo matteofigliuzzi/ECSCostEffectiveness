@@ -45,7 +45,7 @@ The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1
 
 $$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{intervention}(d) C_{intervention} + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) C(d)$$
 
-The expected life years gained (LYG) for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$, assuming additive disease effects is:
+The expected life years gained (LYG) for strategy $\mathcal{S}$ assuming additive disease effects is:
 
 $$E[LYG(\mathcal{S})] = \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) L(d)$$
 
