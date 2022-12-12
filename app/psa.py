@@ -6,7 +6,23 @@ import seaborn as sns
 from collections import Counter
 import copy
 
+
+
 class Disease():
+    """Disease class.
+
+    The class provides genetic and clinical information about a disease and functionality
+    to estimate the inheritance risk of a disease based on the carrier rate and the
+    inheritance mechanisms (i.e: recessive,dominant,x-linked)
+
+    Attributes:
+        name: name of the disease
+        carrier_rate: A float quantifying the in the carrier rate in the population.
+        inheritance: A string specifying the genetic mechanism ('recessive' or 'X-linked recessive')
+        cost: Healthcare cost related to disease management
+        life_expectancy: life expectancy for individuals affected by disease (Years)
+        p_risk: probability for the offspring to be affected by disease
+    """
 
     def __init__(self, name, carrier_rate, life_expectancy, cost, inheritance='recessive'):
         self.name = name
@@ -18,6 +34,9 @@ class Disease():
 
 
     def compute_risk(self):
+        """
+        method to estimate the risk of being affected
+        """
 
         if self.inheritance == 'recessive':
             self.p_risk = np.power(self.carrier_rate,2)
@@ -33,6 +52,16 @@ class Disease():
         return 'Disease: {}'.format(self.name)
 
 class Strategy():
+    """Strategy class.
+
+    This class specify the screening strategy, providing information about the screened disease and the screening cost
+
+    Attributes:
+        strategy_name: name of the strategy
+        testing_cost: cost of the screening
+        disease_list: list of diseases screened by strategy
+        disease_dict: dictionary specifying the disease space
+    """
 
     def __init__(self, strategy_name='', disease_list=[], testing_cost=0, disease_dict = {}):
         self.strategy_name = strategy_name
@@ -44,6 +73,7 @@ class Strategy():
         return 'Strategy: {}'.format(self.strategy_name)
 
     def disease_probabilies(self, disease_name, eps_cs, rho_notint, eps_pgt):
+        """Estimate the probability of intervention and the probability of affected offspring"""
         disease = self.disease_dict[disease_name]
         p_risk = disease.p_risk
         if disease_name in self.disease_list:
@@ -57,6 +87,8 @@ class Strategy():
 
     def assess_strategy(self, disease_space=None, life_expectancy_healthy=83, intervention_cost=3000,
                         eps_cs=0.02, rho_notint=0.23, eps_pgt=0.02):
+        """quantitative assessment of the strategy in terms of probability of being affected by any disease in the
+        disease space, life expectancy and total cost of the strategy        """
 
         if disease_space is None:
             disease_space = self.disease_list
@@ -92,6 +124,10 @@ class Strategy():
 
 
 class Icer():
+    """
+    Class for deterministic comparison of two screening strategies and ICER (Incremental Cost-Effectiveness Ratio)
+    estimation
+    """
 
     def __init__(self, strategy1, strategy2, disease_space=None, life_expectancy_healthy=83, intervention_cost=3000,
                  eps_cs=0.02, rho_notint=0.23, eps_pgt=0.02, testing_cost1=None, testing_cost2=None):
@@ -167,6 +203,9 @@ class Icer():
 
 
 class Psa():
+    """
+    Class to perform Probabilistic Sensitivity Analysis
+    """
 
     def __init__(self, strategy1, strategy2):
 

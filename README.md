@@ -41,17 +41,17 @@ Intervention probability in case strategy screens for disease $d$:
 $$p_{intervention}(d)=\frac{1}{4} p_{risk}(d) (1-\epsilon_{CS})(1-\rho)$$
 
 
-The expected total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$ is:
+The average total cost for strategy $\mathcal{S}$, screening for disease $\{d_1,...,d_N\}$ is:
 
-$$E[C(\mathcal{S})] = C_{CS}(\mathcal{S}) + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{intervention}(d) C_{intervention} + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) C(d)$$
+$$C(\mathcal{S}) = C_{CS}(\mathcal{S}) + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{intervention}(d) C_{intervention} + \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) C(d)$$
 
-The expected life years gained (LYG) for strategy $\mathcal{S}$ assuming additive disease effects is:
+The average number of life years gained (LYG) for strategy $\mathcal{S}$ assuming additive disease effects is:
 
-$$E[LYG(\mathcal{S})] = \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) L(d)$$
+$$LYG(\mathcal{S}) = \sum_{d\in\mathcal{D}(\mathcal{S})} p_{affected}(d) L(d)$$
 
 The Increamental Cost-Effectiveness Ratio (ICER) between strategy $\mathcal{S_1}$ and $\mathcal{S_2}$ is:
 
-$$ICER(\mathcal{S_1};\mathcal{S_2}) = \frac{E \[LYG(\mathcal{S_2})\]-E\[LYG(\mathcal{S_1})\]}{E\[C(\mathcal{S_2})\]-E\[C(\mathcal{S_1})\]}$$
+$$ICER(\mathcal{S_1};\mathcal{S_2}) = \frac{LYG(\mathcal{S_2})-LYG(\mathcal{S_1})}{C(\mathcal{S_2})-C(\mathcal{S_1})}$$
 
 ## Use docker to run ECS cost-effectiveness Dashboard locally 
 
@@ -65,8 +65,9 @@ Run the image as container:
 
 Visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
 
-Custom analysis can be uploaded uploading excel files with custom disease list and custom strategies.
-The excel files should be organized as example files in data/ folder.
+The dashboards allows to perform deterministic and probabilistic cost-effectiveness analysis with 
+custom parameters, custom disease list and custom screening stategies. Disease list and custom strategies 
+can be uploaded as excel files, which should be formatted as the examplary files in data/ folder of the github repository.
 
 ![plot](./resources/CEAC.png)
 
