@@ -19,8 +19,6 @@ class data_loader():
             self.update_strategy_costs(df_costs)
 
 
-        #self.strategy_dict['No testing'] = Strategy(strategy_name='No testing', disease_list=[], testing_cost=0,
-        #                                            disease_dict=self.disease_dict)
 
     def load_disease(self,df):
 
@@ -48,10 +46,6 @@ class data_loader():
             strategy_dict[strategy] = Strategy(strategy_name=strategy, disease_list=disease_list,
                                                     disease_dict=self.disease_dict)
 
-        #strategy_dict['Strategy A1 (MS)'].testing_cost = 240
-        #strategy_dict['Strategy A2 (FS)'].testing_cost = 270
-        #strategy_dict['Strategy C (ACOG)'].testing_cost = 180
-        #strategy_dict['Strategy D (ACMG)'].testing_cost = 180
 
         strategy_dict['No testing'] = Strategy(strategy_name='No testing', disease_list=[], testing_cost=0,
                                                     disease_dict=self.disease_dict)
@@ -64,34 +58,3 @@ class data_loader():
             cost = j['cost']
             self.strategy_dict[strategy].testing_cost = cost
 
-
-#def load_data_old(filename='data/Dati Input.xlsx'):
-#
-#    df = pd.read_excel(filename)
-#
-#
-#   disease_dict_real = {}
-#
-#    for i,j in df.iterrows():
-#        name = j['Disease']
-#        carrier_rate = j['Carrier rate - IGX']
-#        cost = j['Cost Disease']
-#        life_exp = j['Life Expectancy']
-#        inheritance = j['Inheritance']
-#        disease_dict_real[name] = Disease(name=name,carrier_rate=carrier_rate,inheritance=inheritance,
-#                                          life_expectancy=life_exp,cost=cost)
-#
-#    strategy_dict_real = {}
-#
-#    for strategy in ['Strategy A1 (MS)','Strategy A2 (FS)','Strategy C (ACOG)','Strategy D (AMCG)']:
-#        disease_list =     df.loc[df[strategy] ==1,'Disease'].values
-#        strategy_dict_real[strategy] = Strategy(strategy_name=strategy,disease_list=disease_list,disease_dict = disease_dict_real)
-#
-#    strategy_dict_real['Strategy A1 (MS)'].testing_cost = 240
-#    strategy_dict_real['Strategy A2 (FS)'].testing_cost = 270
-#    strategy_dict_real['Strategy C (ACOG)'].testing_cost = 180
-#    strategy_dict_real['Strategy D (AMCG)'].testing_cost = 180
-#
-#    strategy_dict_real['No testing'] = Strategy(strategy_name='No testing',disease_list = [], testing_cost = 0, disease_dict = disease_dict_real)
-#
-#    return disease_dict_real,strategy_dict_real
