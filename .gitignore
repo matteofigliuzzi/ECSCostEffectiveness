@@ -1,2 +1,5 @@
 output/*
 app/__pycache__/*
+.idea/
+notebook/.ipynb_checkpoints/
+source/__pycache__/*
