@@ -1,5 +1,5 @@
 # ECS Cost-effectiveness analyzer
-Python library and dashboard to perform deterministic and probabilistic cost effectiveness analysis of
+Python library and dashboard to perform deterministic and probabilistic cost effectiveness analysis for
 different carrier screening strategies.
 
 ## Mathematical Model
@@ -57,15 +57,15 @@ $$ICER(\mathcal{S_1};\mathcal{S_2}) = \frac{LYG(\mathcal{S_2})-LYG(\mathcal{S_1}
 
 Create docker image:
 
-    docker build -t ecs_dashboard
+    docker build -t ecs_dashboard .
 
 Run the image as container:
 
     docker run -p 8080:8053 ecs_dashboard
 
-Visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
+Then visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
 
-The dashboards allows to perform deterministic and probabilistic cost-effectiveness analysis with 
+The dashboard allows to perform deterministic and probabilistic cost-effectiveness analysis with 
 custom parameters, custom disease list and custom screening stategies. Disease list and custom strategies 
 can be uploaded as excel files, which should be formatted as the examplary files in data/ folder of the github repository.
 
