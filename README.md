@@ -65,13 +65,13 @@ Run the image as container:
 
 Then visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
 
+
+![plot](./resources/CEAC.png)
+
+
 The dashboard allows to perform deterministic and probabilistic cost-effectiveness analysis with 
 custom parameters, custom disease list and custom screening stategies. Disease list and custom strategies 
-can be uploaded as excel files, which should be formatted as the examplary files in data/ folder of the repository:
-
-- disease list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Disease_Tier3.xlsx
-- strategy list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
-- cost list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
+can be uploaded as excel files, which should be formatted as follows:
 
 **Disease list format**
 
@@ -102,7 +102,12 @@ can be uploaded as excel files, which should be formatted as the examplary files
 | 3        | 400  |
 
 
-![plot](./resources/CEAC.png)
+You can check the example files in data/ folder of the repository:
+
+- disease list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Disease_Tier3.xlsx
+- strategy list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
+- cost list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
+
 
 
 ## Run cost-effectiveness analysis on jupyter notebook
