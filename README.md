@@ -83,7 +83,15 @@ can be uploaded as excel files, which should be formatted as follows:
 |4|very-long-chain acyl-CoA dehydrogenase deficiency|recessive|0.003398|376.000|72.4|
 
 
-**Strategy list format**
+**Strategy Cost format**
+
+| strategy   | cost |
+|------------|------|
+| Strategy A | 200  |
+| Strategy B | 150  |                                               |
+| Strategy C | 400  |
+
+**Strategy-Disease matrix format**
 
 |#disease|Disease|Strategy A|Strategy B|Strategy C|
 |--|--------|---|---|---|
@@ -93,20 +101,13 @@ can be uploaded as excel files, which should be formatted as follows:
 |4|very-long-chain acyl-CoA dehydrogenase deficiency|0|1|1|
 
 
-**Cost list format**
-
-| strategy   | cost |
-|------------|------|
-| Strategy A | 200  |
-| Strategy B | 150  |                                               |
-| Strategy C | 400  |
 
 
 You can check the example files in data/ folder of the repository:
 
 - disease list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Disease_Tier3.xlsx
-- strategy list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
-- cost list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
+- strategy-disease matrix format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
+- stategy cost format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
 
 
 
