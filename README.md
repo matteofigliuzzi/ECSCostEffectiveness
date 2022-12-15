@@ -77,9 +77,9 @@ can be uploaded as excel files, which should be formatted as follows:
 
 |#disease|Disease|Inheritance|Carrier rate|Cost Disease|Life Expectancy|
 |--|--------|---|---|---|----------|
-|1|ABCC8-related familial hyperinsulinism|recessive|0.00178|431.600|83|
-|2|X-linked adrenoleukodystrophy|X-linked recessive|0.00013|52.000|10|
-|3|medium chain acyl-CoA dehydrogenase deficiency|recessive|0.00807|431.000|83|
+|1|ABCC8-related familial hyperinsulinism|recessive|0.00178|431.600|83.0|
+|2|X-linked adrenoleukodystrophy|X-linked recessive|0.00013|52.000|10.0|
+|3|medium chain acyl-CoA dehydrogenase deficiency|recessive|0.00807|431.000|83.0|
 |4|very-long-chain acyl-CoA dehydrogenase deficiency|recessive|0.003398|376.000|72.4|
 
 
