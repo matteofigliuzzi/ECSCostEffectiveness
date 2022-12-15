@@ -53,24 +53,11 @@ The Increamental Cost-Effectiveness Ratio (ICER) between strategy $\mathcal{S_1}
 
 $$ICER(\mathcal{S_1};\mathcal{S_2}) = \frac{LYG(\mathcal{S_2})-LYG(\mathcal{S_1})}{C(\mathcal{S_2})-C(\mathcal{S_1})}$$
 
-## Use docker to run ECS cost-effectiveness Dashboard locally 
-
-Create docker image:
-
-    docker build -t ecs_dashboard .
-
-Run the image as container:
-
-    docker run -p 8080:8053 ecs_dashboard
-
-Then visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
+## Input data format
 
 
-![plot](./resources/CEAC.png)
-
-
-The dashboard allows to perform deterministic and probabilistic cost-effectiveness analysis with 
-custom parameters, custom disease list and custom screening stategies. Disease list and custom strategies 
+The library allows to perform deterministic and probabilistic cost-effectiveness analysis with 
+custom parameters, custom disease list and custom screening strategies. Disease list and custom strategies 
 can be uploaded as excel files, which should be formatted as follows:
 
 **Disease list format**
@@ -108,6 +95,24 @@ You can check the example files in data/ folder of the repository:
 - disease list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Disease_Tier3.xlsx
 - strategy-disease matrix format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
 - stategy cost format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
+
+
+
+
+## Use docker to run ECS cost-effectiveness Dashboard locally 
+
+Create docker image:
+
+    docker build -t ecs_dashboard .
+
+Run the image as container:
+
+    docker run -p 8080:8053 ecs_dashboard
+
+Then visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
+
+
+![plot](./resources/CEAC.png)
 
 
 
