@@ -95,11 +95,11 @@ can be uploaded as excel files, which should be formatted as follows:
 
 **Cost list format**
 
-| strategy | cost |
-|----------|------|
-| 1        | 200  |
-| 2        | 150  |                                               |
-| 3        | 400  |
+| strategy   | cost |
+|------------|------|
+| Strategy A | 200  |
+| Strategy B | 150  |                                               |
+| Strategy C | 400  |
 
 
 You can check the example files in data/ folder of the repository:
