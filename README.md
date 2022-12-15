@@ -67,9 +67,43 @@ Then visit [0.0.0.0:8080](http://0.0.0.0:8080/) to access dashboard
 
 The dashboard allows to perform deterministic and probabilistic cost-effectiveness analysis with 
 custom parameters, custom disease list and custom screening stategies. Disease list and custom strategies 
-can be uploaded as excel files, which should be formatted as the examplary files in data/ folder of the github repository.
+can be uploaded as excel files, which should be formatted as the examplary files in data/ folder of the repository:
+
+- disease list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Disease_Tier3.xlsx
+- strategy list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategies_Tier3.xlsx
+- cost list format: https://github.com/matteofigliuzzi/ECSCostEffectiveness/blob/main/data/Dati%20Input%20Strategy%20Costs_Tier3.xlsx
+
+**Disease list format**
+
+|#disease|Disease|Inheritance|Carrier rate|Cost Disease|Life Expectancy|
+|--|--------|---|---|---|----------|
+|1|ABCC8-related familial hyperinsulinism|recessive|0.00178|431.600|83|
+|2|X-linked adrenoleukodystrophy|X-linked recessive|0.00013|52.000|10|
+|3|medium chain acyl-CoA dehydrogenase deficiency|recessive|0.00807|431.000|83|
+|4|very-long-chain acyl-CoA dehydrogenase deficiency|recessive|0.003398|376.000|72.4|
+
+
+**Strategy list format**
+
+|#disease|Disease|Strategy A|Strategy B|Strategy C|
+|--|--------|---|---|---|
+|1|ABCC8-related familial hyperinsulinism|1|0|1|
+|2|X-linked adrenoleukodystrophy|0|1|1|
+|3|medium chain acyl-CoA dehydrogenase deficiency|0|0|1|
+|4|very-long-chain acyl-CoA dehydrogenase deficiency|0|1|1|
+
+
+**Cost list format**
+
+| strategy | cost |
+|----------|------|
+| 1        | 200  |
+| 2        | 150  |                                               |
+| 3        | 400  |
+
 
 ![plot](./resources/CEAC.png)
+
 
 ## Run cost-effectiveness analysis on jupyter notebook
 
