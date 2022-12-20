@@ -288,7 +288,7 @@ class Psa():
         self.life_exp2_deterministic = out_avg.life_exp2
 
 
-    def plot_ceac_hist(self, bins=None, labels='', range=None,outfile=None):
+    def plot_ceac_hist(self, bins=None, labels='', range=None,outfile=None,title=None):
 
         if bins is None:
             bins = np.int(np.log2(self.nsim) * 5)
@@ -307,7 +307,11 @@ class Psa():
                 label="Cost-effectivness probability")
         # plt.xlabel(labels)
         # plt.ylabel("Proportion")
-        plt.title('CEAC diagram: {} vs {}'.format(self.strategy1.strategy_name, self.strategy2.strategy_name))
+
+        if title is None:
+            plt.title('CEAC diagram: {} vs {}'.format(self.strategy1.strategy_name, self.strategy2.strategy_name))
+        else:
+            plt.title(title)
         # ax_bis.legend();
         # ax.legend();
         ax.grid()
