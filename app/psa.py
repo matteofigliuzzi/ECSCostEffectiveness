@@ -63,14 +63,50 @@ class Strategy():
         disease_dict: dictionary specifying the disease space
     """
 
-    def __init__(self, strategy_name='', disease_list=[], testing_cost=0, disease_dict = {}):
+    def __init__(self, strategy_name='', disease_list=[], testing_cost=0, testing_mode='parallel',carrier_rate_th=0,disease_dict = {}):
         self.strategy_name = strategy_name
-        self.testing_cost = testing_cost
-        self.disease_list = disease_list
         self.disease_dict = disease_dict
+        self.testing_mode = testing_mode
+        self.testing_cost_couple = testing_cost
+        self.carrier_rate_th = carrier_rate_th
+        self.disease_list = disease_list
+        self.update_cost()
+
+    def update_cost(self):
+        if self.testing_mode == 'parallel': #parallel testing of the couple
+            self.testing_cost = self.testing_cost_couple
+            self.pmale_testing = 1
+        elif self.testing_mode == 'sequential': #male is tested only if female is carrier of any of the diseases
+            self.testing_cost = self.compute_sequential_testing_cost()
+        elif self.testing_mode == 'only_female': #only female is tested
+            self.disease_list = [s for s in self.disease_list if self.disease_dict[s].inheritance == 'X-linked recessive']
+            self.testing_cost = 0.5*self.testing_cost_couple
+            self.pmale_testing = 0
+        elif self.testing_mode == 'sequential_conditional': #male is tested only if female is carrier of any of the diseases with carrier rate greater than th
+            self.disease_list = [s for s in self.disease_list if ((self.disease_dict[s].inheritance == 'X-linked recessive') or (self.disease_dict[s].carrier_rate>self.carrier_rate_th))]
+            self.testing_cost = self.compute_sequential_testing_cost()
 
     def __repr__(self):
         return 'Strategy: {}'.format(self.strategy_name)
+
+
+    def compute_sequential_testing_cost(self):
+
+        #cost for preliminary female screening
+        female_cost = 0.5 * self.testing_cost_couple
+
+        #probability for negative result on all recessive diseases:
+        p_female_neg = 1.0
+        for disease_name in self.disease_list:
+            disease = self.disease_dict[disease_name]
+            if disease.inheritance == 'recessive':
+                p_female_neg *= (1 - disease.carrier_rate) #update p_female_neg
+            else:
+                pass
+        self.pmale_testing = (1 - p_female_neg)
+        male_cost = self.pmale_testing * 0.5 * self.testing_cost_couple
+
+        return male_cost + female_cost
 
     def disease_probabilies(self, disease_name, eps_cs, rho_notint, eps_pgt):
         """Estimate the probability of intervention and the probability of affected offspring"""

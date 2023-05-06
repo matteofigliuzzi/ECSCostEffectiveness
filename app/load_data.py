@@ -56,5 +56,6 @@ class data_loader():
         for i,j in df.iterrows():
             strategy = j['strategy']
             cost = j['cost']
-            self.strategy_dict[strategy].testing_cost = cost
+            self.strategy_dict[strategy].testing_cost_couple = cost
+            self.strategy_dict[strategy].update_cost()
 
